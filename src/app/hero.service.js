@@ -13,8 +13,14 @@ var HeroService = (function () {
     // getHeroes(): Hero [] {
     //     return HEROES;
     // } 
+    // GETS ALL HEROES
     HeroService.prototype.getHeroes = function () {
         return Promise.resolve(mock_heroes_1.HEROES);
+    };
+    // GET HERO BY ID
+    HeroService.prototype.getHero = function (id) {
+        return this.getHeroes()
+            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
     };
     HeroService.prototype.getHeroesSlowly = function () {
         var _this = this;
